@@ -1,11 +1,12 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductFinder {
 
-    public Product findCheapest(Product[] products) {
-        if (products == null || products.length == 0) return null;
+    public Product findCheapest(List<Product> products) {
+        if (products == null || products.isEmpty()) return null;
 
-        Product cheapest = products[0];
+        Product cheapest = products.getFirst();
         for (Product product : products) {
             if (product.getPrice() < cheapest.getPrice()) {
                 cheapest = product;
@@ -14,10 +15,10 @@ public class ProductFinder {
         return cheapest;
     }
 
-    public Product findMostExpensive(Product[] products) {
-        if (products == null || products.length == 0) return null;
+    public Product findMostExpensive(List<Product> products) {
+        if (products == null || products.isEmpty()) return null;
 
-        Product mostExpensive = products[0];
+        Product mostExpensive = products.get(0);
         for (Product product : products) {
             if (product.getPrice() > mostExpensive.getPrice()) {
                 mostExpensive = product;
@@ -26,28 +27,28 @@ public class ProductFinder {
         return mostExpensive;
     }
 
-    public Product[] findNCheapest(Product[] products, int n) {
-        if (products == null || products.length == 0) return new Product[0];
+    public List<Product> findNCheapest(List<Product> products, int n) {
+        if (products == null || products.isEmpty()) return new ArrayList<>();
 
-        int limit = Math.min(n, products.length);
+        int limit = Math.min(n, products.size());
 
-        Product[] arrayCopy = Arrays.copyOf(products, products.length);
+        List<Product> listCopy = new ArrayList<>(products);
 
         ProductSorter sorter = new ProductSorter();
-        Product[] sortedProducts = sorter.sort(arrayCopy, ProductComparators.byPriceAsc());
+        List<Product> sortedProducts = sorter.sort(listCopy, ProductComparators.byPriceAsc());
 
-        return Arrays.copyOfRange(sortedProducts, 0, limit);
+        return new ArrayList<>(sortedProducts.subList(0, limit));
     }
 
-    public Product[] findNMostExpensive(Product[] products, int n) {
-        if (products == null || products.length == 0) return new Product[0];
+    public List<Product> findNMostExpensive(List<Product> products, int n) {
+        if (products == null || products.isEmpty()) return new ArrayList<>();
 
-        int limit = Math.min(n, products.length);
-        Product[] arrayCopy = Arrays.copyOf(products, products.length);
+        int limit = Math.min(n, products.size());
+        List<Product> listCopy = new ArrayList<>(products);
 
         ProductSorter sorter = new ProductSorter();
-        Product[] sortedProducts = sorter.sort(arrayCopy, ProductComparators.byPriceDescThenNameAsc());
+        List<Product> sortedProducts = sorter.sort(listCopy, ProductComparators.byPriceDescThenNameAsc());
 
-        return Arrays.copyOfRange(sortedProducts, 0, limit);
+        return new ArrayList<>(sortedProducts.subList(0, limit));
     }
 }

@@ -1,10 +1,9 @@
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 public class ProductSorter {
 
-    public Product[] sort(Product[] products,Comparator<Product> comparator){
-        Arrays.sort(products,comparator);
+    public List<Product> sort(List<Product> products, Comparator<Product> comparator){
+        products.sort(comparator);
         return products;
     }
 }

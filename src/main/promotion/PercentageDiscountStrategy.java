@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class PercentageDiscountStrategy implements PromotionStrategy {
 
     private final double threshold;
@@ -14,19 +17,18 @@ public class PercentageDiscountStrategy implements PromotionStrategy {
 
         if (cart.calculateTotalBasePrice() > this.threshold) {
 
-            Product[] originalItems = cart.getItems();
-            Product[] discountedItems = new Product[originalItems.length];
-
+            List<Product> originalItems = cart.getItems();
+            List<Product> discountedItems = new ArrayList<>();
 
             double multiplier = 1.0 - (this.percentage / 100.0);
 
-            for (int i = 0; i < originalItems.length; i++) {
-                Product item = originalItems[i];
+            for (Product item : originalItems) {
                 if (item == null) continue;
 
                 double newPrice = item.getDiscountPrice() * multiplier;
 
-                discountedItems[i] = item.withDiscountPrice(newPrice);
+
+                discountedItems.add(item.withDiscountPrice(newPrice));
             }
 
             cart.updateItems(discountedItems);
