@@ -18,7 +18,7 @@ public class Cart {
     }
 
     public double calculateTotalBasePrice() {
-        double totalPrice = 0;.
+        double totalPrice = 0;
         for (Product item : this.items) {
             totalPrice += item.getPrice();
         }
