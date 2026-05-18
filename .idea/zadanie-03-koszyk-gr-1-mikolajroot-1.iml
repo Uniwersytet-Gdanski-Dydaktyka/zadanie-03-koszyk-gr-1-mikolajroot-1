@@ -7,8 +7,12 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/model" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/promotion" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/service" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/model" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/promotion" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/service" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="junit.jupiter" level="project" />
   </component>
 </module>
